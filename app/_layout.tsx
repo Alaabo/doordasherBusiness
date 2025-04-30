@@ -8,6 +8,7 @@ import { I18nextProvider } from "react-i18next";
 import i18n from "@/utils/i18n";
 import { AuthProvider } from "@/lib/authContext";
 import { LocationProvider } from "@/lib/locationContxt";
+
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
     "Poppins-Black": require("../assets/fonts/Poppins-Black.ttf"),
@@ -37,7 +38,7 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="index" options={{headerShown : false}}/>
         <Stack.Screen name="noLocationError" options={{headerShown : false}}/>
-        <Stack.Screen name="addProduct" options={{headerShown : false}}/>
+        <Stack.Screen name="addNewProduct"  options={{headerShown : false}}/>
         <Stack.Screen name="(root)" options={{headerShown : false}}/>
         <Stack.Screen name="phoneNumber" options={{headerShown : false}}/>
       </Stack>

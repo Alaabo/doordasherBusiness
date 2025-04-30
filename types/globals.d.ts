@@ -42,10 +42,12 @@ export type Businesses = {
     phoneNumber : string
 }
 
-export type Menu ={
+export type ProductType ={
     $id : string ,
     name : string ,
     description : string ,
     price : number ,
-    coverpic : string
+    coverpic : string,
+    storeId? : string ,
 }
+

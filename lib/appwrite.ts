@@ -3,7 +3,7 @@ import {Account, AppwriteException, Avatars, Client, Databases, ID, OAuthProvide
 
 import { openAuthSessionAsync } from "expo-web-browser";
 
-import { Businesses, DBUser, RequestType, Transaction } from "@/types/globals";
+import {Businesses, DBUser, ProductType, RequestType, Transaction} from "@/types/globals";
 
 
 import { makeRedirectUri } from 'expo-auth-session'
@@ -311,6 +311,23 @@ export const fetchOrdersByStoreId = async (id : string) : Promise<RequestType[] 
     if(!request) return null
 
     return request as unknown as RequestType[]
+  } catch (error : any) {
+    console.log(error)
+    if (error.message === "Document with the requested ID could not be found" ) return null
+    return error
+  }
+
+}
+
+export const fetchProductsById = async (id : string) : Promise<ProductType[] | null | Error> =>{
+  try {
+    const request = await databases.getDocument(config.databseId! , "products" , id , [
+        Query.equal('storeId', id )
+    ])
+
+    if(!request) return null
+
+    return request as unknown as ProductType[]
   } catch (error : any) {
     console.log(error)
     if (error.message === "Document with the requested ID could not be found" ) return null
