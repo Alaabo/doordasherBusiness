@@ -72,7 +72,7 @@ const PhoneNumber = () => {
                 name : namRes ,
                 lat : location.latitude ,
                 lon : location.longitude ,
-                menuproducts : [''] ,
+                products : [''] ,
                 email : business.email ,
                 phoneNumber : phone
                 

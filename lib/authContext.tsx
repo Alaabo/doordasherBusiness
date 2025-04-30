@@ -93,7 +93,7 @@ export const AuthProvider = ({ children }: AuthProviderProps ) => {
         const subscription = AppState.addEventListener('change', (nextAppState: AppStateStatus) => {
             // When app comes back to active state, check auth again
             if (nextAppState === 'active') {
-                reload();
+                // reload();
             }
         });
         return () => {

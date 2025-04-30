@@ -274,7 +274,7 @@ export const createBusiness = async (business : Businesses) =>{
       name : business.name ,
       lat : business.lat ,
       lon : business.lon ,
-      menuproducts : business.menuproducts ,
+      products : business.products ,
       email : business.email ,
       phoneNumber : business.phoneNumber
     })
@@ -302,6 +302,22 @@ export const readBusiness = async (id : string ) =>{
   }
 }
 
+export const fetchOrdersByStoreId = async (id : string) : Promise<RequestType[] | null | Error> =>{
+  try {
+    const request = await databases.getDocument(config.databseId! , "requests" , id , [
+        Query.equal('storeId', id )
+    ])
+
+    if(!request) return null
+
+    return request as unknown as RequestType[]
+  } catch (error : any) {
+    console.log(error)
+    if (error.message === "Document with the requested ID could not be found" ) return null
+    return error
+  }
+
+}
 
 //Users Section
 
@@ -351,7 +367,7 @@ export const getNearby = async (location : LocationProp)=>{
     const minLng = location.longitude - lngDelta;
     const maxLng = location.longitude + lngDelta;
 
-    const requests = await databases.listDocuments(config.databseId , "requests" , [
+    const requests = await databases.listDocuments(config.databseId! , "requests" , [
       Query.between('pickUpLan' , minLat , maxLat),
       Query.between('pickUpLon' , minLng , maxLng),
       Query.equal('status' , ['pending'])
@@ -370,7 +386,7 @@ export const getRequestByDriver = async (id : string)=>{
 
  
 
-    const requests = await databases.listDocuments(config.databseId , "requests" , [
+    const requests = await databases.listDocuments(config.databseId! , "requests" , [
       Query.equal('status' , ['onRoad']),
       Query.equal('driverId' , id)
     ])
@@ -388,7 +404,7 @@ export const getRequestByDriverAll = async (id : string)=>{
 
  
 
-    const requests = await databases.listDocuments(config.databseId , "requests" , [
+    const requests = await databases.listDocuments(config.databseId! , "requests" , [
       Query.equal('driverId' , id)
     ])
 

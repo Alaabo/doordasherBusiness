@@ -37,6 +37,7 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="index" options={{headerShown : false}}/>
         <Stack.Screen name="noLocationError" options={{headerShown : false}}/>
+        <Stack.Screen name="addProduct" options={{headerShown : false}}/>
         <Stack.Screen name="(root)" options={{headerShown : false}}/>
         <Stack.Screen name="phoneNumber" options={{headerShown : false}}/>
       </Stack>

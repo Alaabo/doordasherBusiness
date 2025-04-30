@@ -48,7 +48,9 @@ import pending from '../assets/images/pending.png'
 import target from '../assets/icons/target.png'
 import onBoarding from '../assets/images/onBoarding.jpg'
 import close from '../assets/icons/close.png'
+import add from '../assets/icons/add.png'
 const images ={
+  add : add ,
   close : close ,
   onBoarding : onBoarding ,
     target : target ,

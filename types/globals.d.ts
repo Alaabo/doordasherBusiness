@@ -19,6 +19,7 @@ export type RequestType = {
     packageDetails : string ,
     price : number ,
     user : string ,
+    storeId? : string,
 }
 
 export type Transaction = {
@@ -36,7 +37,7 @@ export type Businesses = {
     name : string ,
     lat : number ,
     lon : number ,
-    menuproducts : [string] ,
+    products : [string] ,
     email : string ,
     phoneNumber : string
 }

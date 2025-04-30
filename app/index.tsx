@@ -3,7 +3,6 @@ import { useAuthContext } from "@/lib/authContext";
 import { useLocationContext } from "@/lib/locationContxt";
 import { LinearGradient } from "expo-linear-gradient";
 import { Redirect, router } from "expo-router";
-import { t } from "i18next";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ActivityIndicator, Alert, Dimensions, I18nManager, Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from "react-native";
