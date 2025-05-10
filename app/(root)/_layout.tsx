@@ -81,7 +81,7 @@ const rootLayout = () => {
                 }}
             />
             <Tabs.Screen
-                name="product"
+                name="products"
                 options={{
 
                     headerShown: false,

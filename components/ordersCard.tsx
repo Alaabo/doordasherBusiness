@@ -6,7 +6,7 @@ interface IProps {
 const OrderComponent = (orders : IProps) => {
     return (
         <>
-            hello
+            <Text>hi</Text>
         </>
     )
 }

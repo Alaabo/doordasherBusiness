@@ -2,7 +2,8 @@ import { createContext, ReactNode, useContext, useEffect, useState } from "react
 import { Alert, AppState, AppStateStatus } from "react-native";
 import { t } from "i18next";
 import { router } from "expo-router";
-import { account, ChekAuthState, logoutCurrentUser } from "./appwrite";
+import { account, ChekAuthState, logoutCurrentUser, readBusiness } from "./appwrite";
+import { Businesses } from "@/types/globals";
 interface userProps {
     $id: string;
     name: string;
@@ -15,6 +16,7 @@ interface userProps {
 interface AuthContextProps {
     isLogged : boolean ,
     userData : userProps | null,
+    business : Businesses | null ,
     authLoading : boolean , 
     authErrors : string | null ,
     reload : () => Promise<void>,
@@ -31,7 +33,8 @@ export const AuthProvider = ({ children }: AuthProviderProps ) => {
     const [userData, setUserData] = useState<userProps | null>(null)
     const [authLoading, setAuthLoading] = useState<boolean>(true)
     const [authErrors, setAuthErrors] = useState<string | null>(null)
-    
+    const [business, setBusiness] = useState<Businesses | null>(null)
+  
     
     
     const reload = async () =>{
@@ -48,7 +51,17 @@ export const AuthProvider = ({ children }: AuthProviderProps ) => {
                 setisLogged(false)
                 return
             }
+            const checkBusiness = await readBusiness(checkForAuth?.$id!)
 
+            if(!checkBusiness){
+                setBusiness(null)
+                setAuthErrors('No store Logged In')
+                
+                setisLogged(false)
+                return
+            }
+
+            setBusiness(checkBusiness)
             setUserData(checkForAuth)
             if(checkForAuth.new){
                 router.push('/phoneNumber')
@@ -107,6 +120,7 @@ export const AuthProvider = ({ children }: AuthProviderProps ) => {
         <AuthContext.Provider
             value={
                 {
+                    business ,
                     isLogged ,
                     userData ,
                     authLoading ,

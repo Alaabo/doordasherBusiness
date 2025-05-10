@@ -19,7 +19,7 @@ export type RequestType = {
     packageDetails : string ,
     price : number ,
     user : string ,
-    storeId? : string,
+    storeID? : string,
 }
 
 export type Transaction = {
@@ -48,6 +48,6 @@ export type ProductType ={
     description : string ,
     price : number ,
     coverpic : string,
-    storeId? : string ,
+    storeID? : string ,
 }
 

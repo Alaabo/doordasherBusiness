@@ -9,18 +9,21 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ products }: ProductCardProps) => {
+ 
     const renderRequestItem = ({ item }: { item: ProductType }) => (
-        <View className={"w-[200px] h-[200px] bg-primary-100 rounded-3xl flex-col items-center justify-center"}>
-            <Image source={{uri : item.coverpic}} className="w-[200px] h-[150px] mb-2" resizeMode={"contain"}/>
+        <TouchableOpacity onPress={()=>router.push(`/product/${item.$id}`)} className='mx-2'>
+            <View className={"w-[300px] h-[300px] bg-primary-100 rounded-3xl flex-col items-center justify-center"}>
+            <Image source={{uri : item.coverpic}} className="w-[300px] h-[200px] mb-2" resizeMode={"contain"}/>
             <View className={"flex-col justify-center items-center w-full h-[30px] bg-primary-100 rounded-3xl mb-4"}>
                 <Text className={" font-Poppins-medium text-primary-300 "}>
                     {item.name}
                 </Text>
-                <Text className={" font-Poppins-medium text-primary-300 "}>
+                <Text className={" font-Poppins-medium text-primary-300 text-xl "}>
                     {item.price} DZD
                 </Text>
             </View>
         </View>
+        </TouchableOpacity>
     );
     return (
         <>
@@ -33,7 +36,7 @@ const ProductCard = ({ products }: ProductCardProps) => {
                 maxToRenderPerBatch={10}
                 windowSize={5}
                 getItemLayout={(data, index) => ({
-                    length: 220, // Approximate height of each item
+                    length: 300, // Approximate height of each item
                     offset: 220 * index,
                     index,
                 })}

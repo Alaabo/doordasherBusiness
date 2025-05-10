@@ -40,8 +40,11 @@ export default function RootLayout() {
         <Stack.Screen name="noLocationError" options={{headerShown : false}}/>
         <Stack.Screen name="addNewProduct"  options={{headerShown : false}}/>
         <Stack.Screen name="(root)" options={{headerShown : false}}/>
+        <Stack.Screen name="product/[id]" options={{headerShown : false}}/>
+        <Stack.Screen name="request/[id]" options={{headerShown : false}}/>
         <Stack.Screen name="phoneNumber" options={{headerShown : false}}/>
-      </Stack>
+        <Stack.Screen name="orders" options={{headerShown : false}}/>
+        </Stack>
       <StatusBar hidden = {true} />
       </I18nextProvider>
      </AuthProvider>
