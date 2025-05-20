@@ -1,6 +1,6 @@
 import {FlatList, Image, Text, TouchableOpacity, View} from 'react-native';
 import {ProductType} from "@/types/globals";
-import {router} from "expo-router";
+import {Link, router} from "expo-router";
 import {images} from "@/constants";
 import React from "react";
 
@@ -51,6 +51,12 @@ const ProductCard = ({ products }: ProductCardProps) => {
                         </Text>
                     </TouchableOpacity>
                 </View>
+                }
+                ListFooterComponent={
+                                 <Link className={"text-xl font-Poppins-medium flex items-center justify-center"} href="/products">
+                                    <Text className={"text-xl font-Poppins-medium"}>See All Products</Text>
+                                    <Image source={images.rightArrow} resizeMode={"contain"} className={"w-[12px] h-[12px]"} />
+                                  </Link>
                 }
                 horizontal={true}
             />

@@ -1,4 +1,4 @@
-import { Text, View} from 'react-native';
+import { Text, TouchableOpacity, View} from 'react-native';
 import {SafeAreaView} from "react-native-safe-area-context";
 import {useEffect, useState} from "react";
 import {ProductType} from "@/types/globals";
@@ -7,6 +7,7 @@ import {useAuthContext} from "@/lib/authContext";
 import { useIsFocused } from '@react-navigation/native';
 import ProductCard from '@/components/productCard';
 import ProductCarousel from '@/components/productCaroussel';
+import { router } from 'expo-router';
 
 const Product = () => {
     const [products, setProducts] = useState<ProductType[]>([]);
@@ -30,7 +31,7 @@ const Product = () => {
             
           
           
-        }, []);
+        }, [isFocused]);
 
     return (
         <>
@@ -42,7 +43,9 @@ const Product = () => {
                 </View>
                 
                 <ProductCarousel products={products} />
-
+                <TouchableOpacity className='fixed bottom-[25px] right-[10px] left-[10px]' onPress={()=>router.push('/addNewProduct')}>
+                    <Text className='text-2xl font-Poppins-semibold text-primary-400'>Add Product</Text>
+                </TouchableOpacity>
             </SafeAreaView>
         </>
     )

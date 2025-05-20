@@ -12,7 +12,7 @@ import { login } from "@/lib/appwrite";
 export default function Index() {
   const { width , height } = Dimensions.get('screen')
   const { t, i18n } = useTranslation();
-  const { isLogged, authLoading, authErrors , reload } = useAuthContext();
+  const { isLogged, authLoading, authErrors , reload , logout } = useAuthContext();
   const { locationLoading } = useLocationContext();
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const isRTL = i18n.language === 'ar' || I18nManager.isRTL;
@@ -40,7 +40,8 @@ export default function Index() {
       const results = await login();
       
       if (results.succes) {
-        reload();
+        router.push('/phoneNumber')
+        
       } else {
         Alert.alert('Error', 'Failed to login');
         console.log(authErrors);
@@ -53,7 +54,7 @@ export default function Index() {
     }
   };
 
-
+  
 
   return (
     <ImageBackground source={images.onBoarding} style={{width : width , height : height}}>
@@ -93,6 +94,9 @@ export default function Index() {
             />
           </>
         )}
+      </TouchableOpacity>
+      <TouchableOpacity onPress={()=>logout()}>
+        <Text>Logout</Text>
       </TouchableOpacity>
         </SafeAreaView>
     </ImageBackground>

@@ -67,6 +67,7 @@ const PhoneNumber = () => {
         try {
             setIsLoading(true);
             const business = await account.get();
+            
             const newBusiness = {
                 $id : business.$id ,
                 name : namRes ,

@@ -1,12 +1,12 @@
 export default ({ config }) => ({
     expo: {
-        name: "doordasherbusiness",
-        slug: "doordasherbusiness",
+        name: "djawaddeliverybusiness",
+        slug: "djawaddeliverybusiness",
         owner: "alaabourega",
         version: "1.0.0",
         orientation: "portrait",
         icon: "./assets/images/logo.png",
-        scheme: "doordasherbusiness",
+        scheme: "djawaddeliverybusiness",
         userInterfaceStyle: "automatic",
         newArchEnabled: true,
         developmentClient: {
@@ -14,7 +14,7 @@ export default ({ config }) => ({
         },
         extra: {
             eas: {
-                projectId: '669a330f-9789-43c5-9352-e80165d78f7c'
+                projectId: '77bb36d7-ad46-4174-952a-edd8695f43f3'
             },
             cli: {
                 appVersionSource: "remote" // This addresses the first warning
@@ -27,10 +27,11 @@ export default ({ config }) => ({
             },
         },
         android: {
-            package: "com.Alaabo.doordasherbusiness", // This MUST be unique
+            package: "com.Alaabo.djawaddeliverybusiness", // This MUST be unique
             versionCode: 1,
             adaptiveIcon: {
                 foregroundImage: "./assets/images/logo.png",
+                backgroundColor: "#F44336",
                 googleServicesFile: false,
             },
             config: {
@@ -42,7 +43,7 @@ export default ({ config }) => ({
             intentFilters: [
                 {
                     action: "VIEW",
-                    data: [{ scheme: "doordasherbusiness" }],
+                    data: [{ scheme: "djawaddeliverybusiness" }],
                     category: ["BROWSABLE", "DEFAULT"]
                 }
             ]

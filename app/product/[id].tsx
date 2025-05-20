@@ -115,7 +115,7 @@ const Product = () => {
             {product?.name}
           </Text>
           <Text className="text-2xl font-Poppins-bold text-primary-400 mb-4">
-            {product?.price} DZD   {product?.$id}
+            {product?.price} DZD   
           </Text>
           
           {/* Product Description */}

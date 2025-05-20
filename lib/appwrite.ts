@@ -73,8 +73,21 @@ export async function login() {
     const userId = url.searchParams.get("userId")?.toString();
     if (!secret || !userId) throw new Error("Create OAuth2 token failed");
 
-    const session = await account.createSession(userId, secret);
-    if (!session) throw new Error("Failed to create session");
+    await account.createSession(userId, secret);
+    const userDB = await readUser(userId)
+    if(!userDB){
+      const user = await account.get();
+            const userNew = {
+                $id: user.$id,
+                name: user.name,
+                email: user.email,
+                avatar: "https://images.unsplash.com/photo-1691335053879-02096d6ee2ca?q=60&w=640&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                role: "client",
+                
+            };
+
+          await createUser(userNew as DBUser);
+    }
     
     return {succes : true}
     
@@ -107,7 +120,7 @@ export async function ChekAuthState() {
                     $id : currentAccount.$id ,
                     name : currentAccount.name ,
                     email : currentAccount.email ,
-                    avatar : userInfo.avatar,
+                    avatar : userInfo.avatar? userInfo.avatar: "https://images.unsplash.com/photo-1691335053879-02096d6ee2ca?q=60&w=640&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 
                     new : true
                    }

@@ -97,11 +97,6 @@ const Home = () => {
           </View>
           <View className={" flex justify-center items-center"}>
                 <ProductCard products={products}/>
-
-              <Link className={"text-xl font-Poppins-medium flex items-center justify-center "} href="/products">
-                <Text className={"text-xl font-Poppins-medium"}>See All Products</Text>
-                <Image source={images.rightArrow} resizeMode={"contain"} className={"w-[12px] h-[12px]"} />
-              </Link>
           </View>
 
       </SafeAreaView>
